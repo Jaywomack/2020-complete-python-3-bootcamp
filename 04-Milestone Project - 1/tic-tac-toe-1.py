@@ -45,9 +45,20 @@ def play_game():
 
 
 def handle_turn(player):
+    print(player + "'s turn")
+    # Ask for input and while it is incorrect keep asking
     position = input("Choose a position from 1-9: ")
+    valid = False
+    while not valid:
+        while position not in ['1', '2', '3', '4', '5', '6', '7', '8', '9']:
+            position = input("Invalid input. Choose a position from 1-9!")
 
-    position = int(position) - 1
+        position = int(position) - 1
+
+        if board[position] == '-':
+            valid = True
+        else:
+            print("You cannot go there. Go again.")
 
     board[position] = player
 
@@ -167,7 +178,7 @@ def flip_player():
 play_game()
 
 
-# Board
+# Create a Board
 # Display Board
 # play game
 # handle turn
